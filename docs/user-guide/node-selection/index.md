@@ -114,9 +114,11 @@ met, the pod will still continue to run on the node. In the future we plan to of
 `requiredDuringSchedulingRequiredDuringExecution` which will be just like `requiredDuringSchedulingIgnoredDuringExecution`
 except that it will evict pods from nodes that cease to satisfy the pods' node affinity requirements.
 
-Node affinity is currently expressed using an annotation on Pod. After the release of 1.4, node affinity will use a field, and it will introduce an additional option for affinity called "pod affinity",
-which allows you to control whether a pod schedules onto a particular node based on which other pods are
-running on the node, rather than the labels on the node.
+Thus an example of `requiredDuringSchedulingIgnoredDuringExecution` would be "only run the pod on nodes with Intel CPUs"
+and an example `preferredDuringSchedulingIgnoredDuringExecution` would be "try to run this set of pods in availability
+zone XYZ, but if it's not possible, then allow some to run elsewhere".
+
+Node affinity is currently expressed using an annotation on Pod. Once the feature goes to GA it will use a field of Pod.
 
 Here's an example of a pod that uses node affinity:
 
